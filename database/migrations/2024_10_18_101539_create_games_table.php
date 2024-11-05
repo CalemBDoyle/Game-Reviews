@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('genre');
             $table->text('description')->nullable();
             $table->integer('year');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -28,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('games');
     }
 };
+                      
