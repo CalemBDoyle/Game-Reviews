@@ -13,7 +13,7 @@ class GameController extends Controller
     public function index()
     {
         $games = Game::all(); // Fetch all games
-        return view('games.index', compact('games')); // Return the view with books
+        return view('games.index', compact('games')); // Return the view with games
     }
 
     /**

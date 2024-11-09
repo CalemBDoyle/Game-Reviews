@@ -12,6 +12,7 @@
                 <div class="grid grid cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($games as $game)
                         <x-game-card
+                            :title="$game->title"
                             :genre="$game->genre"
                             :description="$game->description"
                             :year="$game->year"
