@@ -1,4 +1,4 @@
-@props(['action', 'method'])
+@props(['action', 'method', 'game'])
 
 <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -6,6 +6,7 @@
         @method($method)
     @endif
 
+    <!--title-->
     <div class="mb-4">
         <label for="title" class="block text-sm text-gray-700">Title</label>
         <input
@@ -20,6 +21,7 @@
         @enderror
     </div>
 
+    <!--genre-->
     <div class="mb-4">
         <label for="genre" class="block text-sm text-gray-700">Genre</label>
         <input
@@ -34,6 +36,7 @@
         @enderror
     </div>
 
+    <!--year-->
     <div class="mb-4">
         <label for="year" class="block text-sm text-gray-700">year</label>
         <input
@@ -48,6 +51,7 @@
         @enderror
     </div>
     
+    <!--desc-->
     <div class="mb-4">
         <label for="description" class="block text-sm text-gray-700">Description</label>
         <input
@@ -62,6 +66,7 @@
         @enderror
     </div>
 
+    <!--image-->
     <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Game Cover Image</label>
         <input
@@ -84,6 +89,7 @@
         </div>
     @endisset
 
+    <!--button-->
     <div>
         <x-primary-button>
             {{ isset($game) ? 'Update game' : 'Add game' }}
