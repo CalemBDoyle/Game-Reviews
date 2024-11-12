@@ -17,7 +17,7 @@
                     <a href="{{route('games.show', $game) }}">
                         <x-game-card
                             :title="$game->title"
-                            :image="asset('images/' . $game->image)"
+                            :image="$game->image"
                         />
                     </a>
                     @endforeach
