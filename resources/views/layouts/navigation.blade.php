@@ -23,7 +23,7 @@
                     <x-nav-link :href="route('games.create')" :active="request()->routeIs('games.create')">
                         {{ __('Create New Game') }}
                     </x-nav-link>
-                @endif
+                @endif 
                 </div>
             </div>
 
