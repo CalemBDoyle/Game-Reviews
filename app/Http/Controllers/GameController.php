@@ -47,7 +47,7 @@ class GameController extends Controller
         if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('images/games'), $imageName);
-        }
+        } 
     
         // Create a game record in the database
         Game::create([
