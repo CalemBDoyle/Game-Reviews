@@ -69,7 +69,9 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        return view('games.show')->with('game', $game);
+        // Loads games with their asscociated review
+        $game->load('reviews.user');
+        return view('games.show', compact('game'));
     }
 
     /**

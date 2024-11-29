@@ -26,9 +26,23 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Game $game)
     {
-        //
+        
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string|max:1000',
+        ]);
+
+        $game->reviews()->create([
+            'user_id' => auth()->id(),
+            'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+            'book_id' => $book->id
+        ]);
+
+        return redirect()->route('books.show', $book)->with('success', 'Review added successfully.');
+        
     }
 
     /**

@@ -13,6 +13,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('reviews', ReviewController::class);
+    Route::post('games/{game}/reviews', [ReviewController::class,'store'])->name('reviews.store');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -23,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/games/{game}/update', [GameController::class, 'update'])->name('games.update');
     Route::post('/games', [GameController::class, 'store'])->name('games.store');
     Route::post('/games/{game}', [GameController::class, 'destroy'])->name('games.destroy');   
+    
 });
 
 require __DIR__.'/auth.php';
