@@ -95,7 +95,7 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        $games->delete();
+        $game->delete();
 
         return to_route('games.index')->with('success', 'Game deleted successfully');
     }

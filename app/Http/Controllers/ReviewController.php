@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\Review;
 use Illuminate\Http\Request;
+
+
 
 class ReviewController extends Controller
 {
@@ -38,10 +41,10 @@ class ReviewController extends Controller
             'user_id' => auth()->id(),
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'book_id' => $book->id
+            'game_id' => $game->id
         ]);
 
-        return redirect()->route('books.show', $book)->with('success', 'Review added successfully.');
+        return redirect()->route('games.show', $game)->with('success', 'Review added successfully.');
         
     }
 
