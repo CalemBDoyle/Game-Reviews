@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/games', [GameController::class, 'store'])->name('games.store');
     Route::post('/games/{game}', [GameController::class, 'destroy'])->name('games.destroy');   
     
+ 
 });
 
 require __DIR__.'/auth.php';

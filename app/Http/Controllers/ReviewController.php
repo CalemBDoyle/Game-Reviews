@@ -61,7 +61,11 @@ class ReviewController extends Controller
      */
     public function edit(Review $review)
     {
-        //
+        if (auth()->user()->id !== $review->user_id && auth()->user()->role !== 'admin') {
+            return redirect()->route('books.index')->with('error','Access denied.');
+        }
+
+        return view('reviews.edit', compact('review'));
     }
 
     /**
@@ -69,7 +73,10 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        $review->update($request->only(['rating', 'comment']));
+
+        return redirect()->route('books.show', $review->game_id)
+        ->with('success', 'Review updated successfully');
     }
 
     /**
