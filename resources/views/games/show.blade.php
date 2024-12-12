@@ -15,7 +15,13 @@
                             :description="$game->description"
                             :year="$game->year"
                             :image="$game->image"
+                            :link="$game->link"
                         />
+
+                        <a href="{{ $game->link }}" target="_blank" 
+   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block mt-2">
+    Buy Now
+</a>
 
                             {{-- game Reviews --}}
                     <h4 class="font-semibold text-md mt-8">Reviews</h4>
@@ -33,11 +39,10 @@
                                         <a href="{{ route('reviews.edit', $review) }}" class="bg-yellow-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
                                             {{__('Edit Review') }}
                                         </a>
-                                        <form method="POST" action="{{ route('reviews.destroy', $review) }}">
+                                        <form method="POST" action="{{ route('reviews.destroy', ['game' => $game->id, 'review' => $review->id]) }}">
                                             @csrf
                                             @method('delete')
-                                            <x-danger-button :href="route('reviews.destroy', $review)"
-                                                            onclick="event.preventDefault(); this.closest('form').submit();">
+                                            <x-danger-button onclick="event.preventDefault(); this.closest('form').submit();">
                                                 {{ __('Delete Review') }}
                                             </x-danger-button>
                                         </form>

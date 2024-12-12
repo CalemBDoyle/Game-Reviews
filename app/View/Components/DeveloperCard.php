@@ -3,10 +3,10 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
-class review-form extends Component
+class DeveloperCard extends Component
 {
     /**
      * Create a new component instance.
@@ -21,6 +21,6 @@ class review-form extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.review-form');
+        return view('components.developer-card');
     }
 }

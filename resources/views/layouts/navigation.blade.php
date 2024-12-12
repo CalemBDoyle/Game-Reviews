@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('games.index')" :active="request()->routeIs('games.index')">
                         {{ __('View All Games') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('developers.index')" :active="request()->routeIs('developers.index')">
+                        {{ __('View All Developers') }}
+                    </x-nav-link>
 
                     @if(auth()->user()->role === 'admin')
                     <x-nav-link :href="route('games.create')" :active="request()->routeIs('games.create')">

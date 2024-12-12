@@ -62,7 +62,7 @@ class ReviewController extends Controller
     public function edit(Review $review)
     {
         if (auth()->user()->id !== $review->user_id && auth()->user()->role !== 'admin') {
-            return redirect()->route('books.index')->with('error','Access denied.');
+            return redirect()->route('games.index')->with('error','Access denied.');
         }
 
         return view('reviews.edit', compact('review'));
@@ -75,15 +75,18 @@ class ReviewController extends Controller
     {
         $review->update($request->only(['rating', 'comment']));
 
-        return redirect()->route('books.show', $review->game_id)
+        return redirect()->route('games.show', $review->game_id)
         ->with('success', 'Review updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Review $review)
+    public function destroy($gameId, Review $review)
     {
-        //
+        $review->delete();
+
+        return redirect()->route('games.show', ['game' => $gameId])
+                     ->with('success', 'Review deleted successfully.');
     }
 }

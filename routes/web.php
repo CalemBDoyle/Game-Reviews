@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\DeveloperController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,6 +17,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::resource('reviews', ReviewController::class);
     Route::post('games/{game}/reviews', [ReviewController::class,'store'])->name('reviews.store');
+    Route::delete('/games/{game}/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');  
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -25,9 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/games/{game}/edit', [GameController::class, 'edit'])->name('games.edit');
     Route::put('/games/{game}/update', [GameController::class, 'update'])->name('games.update');
     Route::post('/games', [GameController::class, 'store'])->name('games.store');
-    Route::post('/games/{game}', [GameController::class, 'destroy'])->name('games.destroy');   
-    
- 
+    Route::delete('/games/{game}', [GameController::class, 'destroy'])->name('games.destroy');
+    Route::resource('developers', DeveloperController::class)->middleware('auth'); 
+
 });
 
 require __DIR__.'/auth.php';

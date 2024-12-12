@@ -23,4 +23,9 @@ class Game extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function developers()
+    {
+        return $this->belongsToMany(Developer::class);
+    }
 }
