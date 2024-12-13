@@ -117,4 +117,5 @@ class DeveloperController extends Controller
 
         return redirect()->route('developers.index')->with('success', 'Developer deleted successfully.');
     }
+    
 }

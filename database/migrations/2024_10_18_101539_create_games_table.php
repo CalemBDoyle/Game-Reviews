@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('year');
             $table->string('image');
-            $table->string('link')->nullable();
+            $table->text('link');
             $table->timestamps();
         });
     }
