@@ -17,11 +17,10 @@
                             :image="$game->image"
                             :link="$game->link"
                         />
-
-                        <a href="{{ $game->link }}" target="_blank" 
-   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block mt-2">
-    Buy Now
-</a>
+                        <!-- link button -->
+                        <a href="{{ $game->link }}" target="_blank" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-block mt-2">
+                        Buy Now
+                        </a>
 
                             {{-- game Reviews --}}
                     <h4 class="font-semibold text-md mt-8">Reviews</h4>
@@ -58,10 +57,10 @@
                             <label for="rating" class="block font-medium text-sm text-gray-700">Rating</label>
                             <select name="rating" id="rating" class="mt-1 block w-full" required>
                                 <option value="1">1</option>
-                                <option value="1">2</option>
-                                <option value="1">3</option>
-                                <option value="1">4</option>
-                                <option value="1">5</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                         </div>
 

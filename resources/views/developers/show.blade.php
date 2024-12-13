@@ -22,6 +22,7 @@
                                     :image="$game->image"
                                 />
                             </a>
+                            @if(auth()->user()->role === 'admin')
                             <!-- Edit and Delete Buttons -->
                             <div class="mt-4 flex space-x-2">
                             <!-- Edit Button route to games.edit and receives the $game object so it knows which game is being edited -->
@@ -37,8 +38,8 @@
                                  Delete
                             </button>
                             </form>
-                        </div>
-
+                            </div>
+                            @endif   
                         @endforeach 
             </div>
         </div>

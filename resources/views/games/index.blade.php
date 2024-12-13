@@ -19,9 +19,11 @@
                                     :image="$game->image"
                                 />
                             </a>
+                            @if(auth()->user()->role === 'admin')
                             <!-- Edit and Delete Buttons -->
                             <div class="mt-4 flex space-x-2">
                             <!-- Edit Button route to games.edit and receives the $game object so it knows which game is being edited -->
+                       
                             <a href="{{ route('games.edit', $game) }}" class="text-gray-600 bg-orange-700 font-bold py-2 px-4 rounded">
                                 Edit    
                             </a>
@@ -35,6 +37,7 @@
                             </button>
                             </form>
                         </div>
+                        @endif
 
                         @endforeach
                     </div>
